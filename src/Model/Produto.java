@@ -5,13 +5,26 @@ public class Produto {
 	private String nomeProduto;
 	private double preco;
 	private String numeracao;
+	private int idProduto;
 	
 	public Produto(String tipo, String nomeProduto, double preco, String numeracao) {
 		this.tipo = tipo;
 		this.nomeProduto = nomeProduto;
 		this.preco = preco;
 		this.numeracao = numeracao;
+		//this.idProduto = idProduto;
 	}
+
+	
+	public int getIdProduto() {
+		return idProduto;
+	}
+
+
+	public void setIdProduto(int idProduto) {
+		this.idProduto = idProduto;
+	}
+
 
 	public String getTipo() {
 		return tipo;

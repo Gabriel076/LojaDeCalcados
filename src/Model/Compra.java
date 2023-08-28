@@ -10,14 +10,36 @@ public class Compra {
 	private String opcaoPagamento;
 	private Date horaAtual;
 	private double desconto;
+	private double valorC = 0.0;
+	private int idCompra;
 	
 	public Compra(Cliente cliente, Funcionario funcionario) {
 		this.horaAtual = new Date();
 		this.cliente = cliente;
 		this.funcionario = funcionario;
-		this.desconto = desconto;
 		this.produtosComprados = new ArrayList<Produto>();
 	}
+	
+
+	
+	public int getIdCompra() {
+		return idCompra;
+	}
+
+	public void setIdCompra(int idCompra) {
+		this.idCompra = idCompra;
+	}
+
+
+	public double getValorC() {
+		return valorC;
+	}
+
+
+	public void setValorC(double valorC) {
+		this.valorC = valorC;
+	}
+
 
 	public double getDesconto() {
 		return desconto;
@@ -91,7 +113,6 @@ public class Compra {
 	}
 	
 	public double realizarCompra() {
-		double valorC = 0.0;
 		for(int i=0;i<produtosComprados.size();i++) {
 			valorC += produtosComprados.get(i).getPreco();
 		}
