@@ -17,7 +17,7 @@ import javax.swing.JScrollBar;
 public class ListarItensV extends JFrame {
 
 	private JPanel contentPane;
-
+	private static ConfigViews config = new ConfigViews();
 	/**
 	 * Launch the application.
 	 */
@@ -26,6 +26,7 @@ public class ListarItensV extends JFrame {
 			public void run() {
 				try {
 					ListarItensV frame = new ListarItensV();
+					config.ativarConfigPadrao(frame);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

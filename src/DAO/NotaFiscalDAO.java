@@ -30,7 +30,7 @@ public class NotaFiscalDAO {
 			ps.setString(2, nf.getCliente().getCpfCliente());
 			ps.setString(3, nf.getOperador().getCpfFuncionario());
 			ps.execute();
-			
+			System.out.println("item cadastrado com sucesso");
 			return true;
 		}catch(SQLException e) {
 			e.printStackTrace();

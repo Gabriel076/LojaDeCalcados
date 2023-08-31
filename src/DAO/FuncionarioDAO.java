@@ -37,7 +37,7 @@ public class FuncionarioDAO {
 			ps.setString(5, f.getLogin());
 			ps.setString(6, f.getSenha());
 			ps.execute();
-			
+			System.out.println("item cadastrado com sucesso");
 			return true;
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -59,20 +59,27 @@ public class FuncionarioDAO {
 		}
 	}
 
-	public boolean validarFuncionario(String login, String senha, boolean admin) {
-		String sql = "SELECT * FROM Funcionario WHERE login = '?' and senha = '?' and adm = ?;";
+	public Funcionario validarFuncionario(String login, String senha, boolean admin) {
+		String sql = "SELECT * FROM Funcionario WHERE login = ? and senha = ? and adm = ?;";
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, login);
 			ps.setString(2, senha);
 			ps.setBoolean(3, admin);
-			ps.execute();
-			
-			return true;
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				String loginColetado = rs.getString("login");
+				String senhaColetada = rs.getString("senha");
+				
+				Funcionario f = new Funcionario(null,null,0,loginColetado,senhaColetada,false);
+				return f;
+			}
+				
+			return null;
 		}catch(SQLException e) {
 			e.printStackTrace();
-			return false;
+			return null;
 		}
 		
 	}

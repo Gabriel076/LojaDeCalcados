@@ -79,7 +79,7 @@ create table CargaHoraria(
 
 -- cmds
 use LojaDeCalcados;
-insert into Funcionario(cpfFunc,nome,adm,idade,login,senha) values ("404.404.343-45","mateus",false,19,"mat324","4433");
+insert into Funcionario(cpfFunc,nome,adm,idade,login,senha) values ("404.404.343-83","jorge",true,25,"333","333");
 
 use LojaDeCalcados;
 insert into Cliente(cpfClient,nome,email) values ("213.212.222-22","gabriel","ga@gmail.com");
@@ -95,6 +95,7 @@ select* from Produto;
 select* from Cliente;
 
 use LojaDeCalcados;
-DELETE FROM Produto WHERE idProduto = 2;
 select* from Funcionario;
-SELECT * FROM Funcionario WHERE login = 'hug4324' and senha = '3333' and adm= true;
+
+use LojaDeCalcados;
+SELECT * FROM Funcionario WHERE login = '111' and senha = '222' and adm=false;

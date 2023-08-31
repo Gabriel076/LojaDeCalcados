@@ -1,7 +1,6 @@
 package View;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -15,6 +14,9 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.ButtonGroup;
+import Controller.PaginaIniController;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PaginaInicialV extends JFrame {
 
@@ -22,7 +24,9 @@ public class PaginaInicialV extends JFrame {
 	private JTextField Caixalogin;
 	private JPasswordField caixaSenha;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-
+	private JRadioButton btnRadioFunc;
+	private JRadioButton btnRadioAdmin;
+	private static ConfigViews configuracao = new ConfigViews();
 	/**
 	 * Launch the application.
 	 */
@@ -31,6 +35,7 @@ public class PaginaInicialV extends JFrame {
 			public void run() {
 				try {
 					PaginaInicialV frame = new PaginaInicialV();
+					configuracao.ativarConfigPadrao(frame);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,6 +48,7 @@ public class PaginaInicialV extends JFrame {
 	 * Create the frame.
 	 */
 	public PaginaInicialV() {
+		PaginaIniController p = new PaginaIniController(this);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 495, 693);
 		contentPane = new JPanel();
@@ -68,14 +74,14 @@ public class PaginaInicialV extends JFrame {
 		lblNewLabel_1.setBounds(23, 10, 210, 23);
 		panel.add(lblNewLabel_1);
 		
-		JRadioButton btnRadioFunc = new JRadioButton("Funcionário");
+		btnRadioFunc = new JRadioButton("Funcionário");
 		buttonGroup.add(btnRadioFunc);
 		btnRadioFunc.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnRadioFunc.setBackground(new Color(192, 192, 192));
 		btnRadioFunc.setBounds(33, 39, 103, 21);
 		panel.add(btnRadioFunc);
 		
-		JRadioButton btnRadioAdmin = new JRadioButton("Admin");
+		btnRadioAdmin = new JRadioButton("Admin");
 		buttonGroup.add(btnRadioAdmin);
 		btnRadioAdmin.setFont(new Font("Arial", Font.PLAIN, 13));
 		btnRadioAdmin.setBackground(new Color(192, 192, 192));
@@ -104,9 +110,58 @@ public class PaginaInicialV extends JFrame {
 		panel.add(caixaSenha);
 		
 		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				p.validarUsuario(configuracao);
+			}
+		});
 		btnEntrar.setFont(new Font("Arial Black", Font.PLAIN, 13));
 		btnEntrar.setBounds(127, 391, 160, 39);
 		panel.add(btnEntrar);
+	}
+
+	public static ConfigViews getConfiguracao() {
+		return configuracao;
+	}
+
+	public static void setConfiguracao(ConfigViews configuracao) {
+		PaginaInicialV.configuracao = configuracao;
+	}
+
+	public JRadioButton getBtnRadioFunc() {
+		return btnRadioFunc;
+	}
+
+	public void setBtnRadioFunc(JRadioButton btnRadioFunc) {
+		this.btnRadioFunc = btnRadioFunc;
+	}
+
+	public JRadioButton getBtnRadioAdmin() {
+		return btnRadioAdmin;
+	}
+
+	public void setBtnRadioAdmin(JRadioButton btnRadioAdmin) {
+		this.btnRadioAdmin = btnRadioAdmin;
+	}
+
+	public JTextField getCaixalogin() {
+		return Caixalogin;
+	}
+
+	public void setCaixalogin(JTextField caixalogin) {
+		Caixalogin = caixalogin;
+	}
+
+	public JPasswordField getCaixaSenha() {
+		return caixaSenha;
+	}
+
+	public void setCaixaSenha(JPasswordField caixaSenha) {
+		this.caixaSenha = caixaSenha;
+	}
+
+	public ButtonGroup getButtonGroup() {
+		return buttonGroup;
 	}
 
 	

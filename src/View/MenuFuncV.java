@@ -17,7 +17,7 @@ public class MenuFuncV extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
-
+	private static ConfigViews config = new ConfigViews();
 	/**
 	 * Launch the application.
 	 */
@@ -26,6 +26,7 @@ public class MenuFuncV extends JFrame {
 			public void run() {
 				try {
 					MenuFuncV frame = new MenuFuncV();
+					config.ativarConfigPadrao(frame);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

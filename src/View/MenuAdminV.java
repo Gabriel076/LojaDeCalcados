@@ -10,11 +10,11 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+import Controller.MenuAdmController;
 public class MenuAdminV extends JFrame {
 
 	private JPanel contentPane;
-
+	private static ConfigViews config = new ConfigViews();
 	/**
 	 * Launch the application.
 	 */
@@ -23,7 +23,9 @@ public class MenuAdminV extends JFrame {
 			public void run() {
 				try {
 					MenuAdminV frame = new MenuAdminV();
+					config.ativarConfigPadrao(frame);
 					frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -35,6 +37,7 @@ public class MenuAdminV extends JFrame {
 	 * Create the frame.
 	 */
 	public MenuAdminV() {
+		MenuAdmController mn = new MenuAdmController(this);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1122, 693);
 		contentPane = new JPanel();
@@ -54,11 +57,21 @@ public class MenuAdminV extends JFrame {
 		contentPane.add(lblNewLabel_1_1);
 		
 		JButton btnNewButton = new JButton("Cadastrar Funcionário");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mn.cadastrarFunc(config);
+			}
+		});
 		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 15));
 		btnNewButton.setBounds(65, 157, 432, 54);
 		contentPane.add(btnNewButton);
 		
 		JButton btnCadastrarProduto = new JButton("Cadastrar Produto");
+		btnCadastrarProduto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mn.cadastrarProd(config);
+			}
+		});
 		btnCadastrarProduto.setFont(new Font("Arial", Font.PLAIN, 15));
 		btnCadastrarProduto.setBounds(65, 272, 432, 54);
 		contentPane.add(btnCadastrarProduto);
@@ -66,10 +79,7 @@ public class MenuAdminV extends JFrame {
 		JButton btnSair = new JButton("Sair");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PaginaInicialV p = new PaginaInicialV();
-				p.setVisible(true);
-				dispose();
-				
+				mn.sair(config);
 			}
 		});
 		btnSair.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -77,13 +87,24 @@ public class MenuAdminV extends JFrame {
 		contentPane.add(btnSair);
 		
 		JButton btnLancarPromocao = new JButton("Lançar Promoção");
+		btnLancarPromocao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mn.lancarProm(config);
+			}
+		});
 		btnLancarPromocao.setFont(new Font("Arial", Font.PLAIN, 15));
 		btnLancarPromocao.setBounds(625, 157, 432, 54);
 		contentPane.add(btnLancarPromocao);
 		
 		JButton btnListar = new JButton("Listar");
+		btnListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mn.listar(config);
+			}
+		});
 		btnListar.setFont(new Font("Arial", Font.PLAIN, 15));
 		btnListar.setBounds(625, 272, 432, 54);
 		contentPane.add(btnListar);
 	}
+	
 }

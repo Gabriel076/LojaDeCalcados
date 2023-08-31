@@ -3,12 +3,14 @@ package View;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -25,15 +27,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.border.BevelBorder;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import javax.swing.UIManager;
 import javax.swing.JInternalFrame;
-import javax.swing.JDesktopPane;
-import java.awt.BorderLayout;
 
 public class AreaDeTrabalhoV extends JFrame {
-
 	private JPanel contentPane;
 	private JTextField caixaIdCompra;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -46,7 +43,7 @@ public class AreaDeTrabalhoV extends JFrame {
 	private JTextField caixaDesconto;
 	private JTextField caixaNomeProduto;
 	private Date horaAtual = new Date();
-
+	private static ConfigViews configuracao = new ConfigViews();
 	/**
 	 * Launch the application.
 	 */
@@ -55,6 +52,7 @@ public class AreaDeTrabalhoV extends JFrame {
 			public void run() {
 				try {
 					AreaDeTrabalhoV frame = new AreaDeTrabalhoV();
+					
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

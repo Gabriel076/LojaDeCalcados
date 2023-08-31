@@ -17,7 +17,7 @@ public class ListaClientesV extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-
+	private static ConfigViews config = new ConfigViews();
 	/**
 	 * Launch the application.
 	 */
@@ -26,6 +26,7 @@ public class ListaClientesV extends JFrame {
 			public void run() {
 				try {
 					ListaClientesV frame = new ListaClientesV();
+					config.ativarConfigPadrao(frame);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

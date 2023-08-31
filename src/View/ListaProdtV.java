@@ -17,7 +17,7 @@ public class ListaProdtV extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-
+	private static ConfigViews config = new ConfigViews();
 	/**
 	 * Launch the application.
 	 */
@@ -26,6 +26,7 @@ public class ListaProdtV extends JFrame {
 			public void run() {
 				try {
 					ListaProdtV frame = new ListaProdtV();
+					config.ativarConfigPadrao(frame);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

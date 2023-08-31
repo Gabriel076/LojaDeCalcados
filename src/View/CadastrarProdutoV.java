@@ -21,7 +21,10 @@ public class CadastrarProdutoV extends JFrame {
 	private JTextField caixaPrecoProduto;
 	private JTextField caixaNumeracao;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-
+	private static ConfigViews config = new ConfigViews();
+	private JRadioButton bntRadioCalcado;
+	private JRadioButton rdbtnMeia;
+	private JRadioButton rdbtnAcessrios;
 	/**
 	 * Launch the application.
 	 */
@@ -30,6 +33,7 @@ public class CadastrarProdutoV extends JFrame {
 			public void run() {
 				try {
 					CadastrarProdutoV frame = new CadastrarProdutoV();
+					config.ativarConfigPadrao(frame);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -72,14 +76,14 @@ public class CadastrarProdutoV extends JFrame {
 		panel.add(lblNewLabel_1_1_1);
 		lblNewLabel_1_1_1.setFont(new Font("Arial", Font.PLAIN, 16));
 		
-		JRadioButton bntRadioCalcado = new JRadioButton("Calçado");
+		 bntRadioCalcado = new JRadioButton("Calçado");
 		buttonGroup.add(bntRadioCalcado);
 		bntRadioCalcado.setBackground(new Color(192, 192, 192));
 		bntRadioCalcado.setFont(new Font("Arial", Font.PLAIN, 13));
 		bntRadioCalcado.setBounds(44, 62, 85, 21);
 		panel.add(bntRadioCalcado);
 		
-		JRadioButton rdbtnMeia = new JRadioButton("Meia");
+		rdbtnMeia = new JRadioButton("Meia");
 		buttonGroup.add(rdbtnMeia);
 		rdbtnMeia.setFont(new Font("Arial", Font.PLAIN, 13));
 		rdbtnMeia.setBackground(Color.LIGHT_GRAY);
@@ -136,4 +140,53 @@ public class CadastrarProdutoV extends JFrame {
 		btnVoltar.setBounds(914, 10, 198, 36);
 		contentPane.add(btnVoltar);
 	}
+
+	public JTextField getCaixaNomeProduto() {
+		return caixaNomeProduto;
+	}
+
+	public void setCaixaNomeProduto(JTextField caixaNomeProduto) {
+		this.caixaNomeProduto = caixaNomeProduto;
+	}
+
+	public JTextField getCaixaPrecoProduto() {
+		return caixaPrecoProduto;
+	}
+
+	public void setCaixaPrecoProduto(JTextField caixaPrecoProduto) {
+		this.caixaPrecoProduto = caixaPrecoProduto;
+	}
+
+	public JTextField getCaixaNumeracao() {
+		return caixaNumeracao;
+	}
+
+	public void setCaixaNumeracao(JTextField caixaNumeracao) {
+		this.caixaNumeracao = caixaNumeracao;
+	}
+
+	public JRadioButton getBntRadioCalcado() {
+		return bntRadioCalcado;
+	}
+
+	public void setBntRadioCalcado(JRadioButton bntRadioCalcado) {
+		this.bntRadioCalcado = bntRadioCalcado;
+	}
+
+	public JRadioButton getRdbtnMeia() {
+		return rdbtnMeia;
+	}
+
+	public void setRdbtnMeia(JRadioButton rdbtnMeia) {
+		this.rdbtnMeia = rdbtnMeia;
+	}
+
+	public JRadioButton getRdbtnAcessrios() {
+		return rdbtnAcessrios;
+	}
+
+	public void setRdbtnAcessrios(JRadioButton rdbtnAcessrios) {
+		this.rdbtnAcessrios = rdbtnAcessrios;
+	}
+	
 }

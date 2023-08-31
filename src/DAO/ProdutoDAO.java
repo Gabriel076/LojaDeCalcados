@@ -37,7 +37,7 @@ public class ProdutoDAO {
 			ps.setDouble(3, p.getPreco());
 			ps.setString(4, p.getNumeracao());
 			ps.execute();
-			
+			System.out.println("item cadastrado com sucesso");
 			return true;
 		}catch(SQLException e) {
 			e.printStackTrace();

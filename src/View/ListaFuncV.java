@@ -18,7 +18,7 @@ public class ListaFuncV extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-
+	private static ConfigViews config = new ConfigViews();
 	/**
 	 * Launch the application.
 	 */
@@ -27,6 +27,7 @@ public class ListaFuncV extends JFrame {
 			public void run() {
 				try {
 					ListaFuncV frame = new ListaFuncV();
+					config.ativarConfigPadrao(frame);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

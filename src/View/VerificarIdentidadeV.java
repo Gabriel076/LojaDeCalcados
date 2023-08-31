@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 public class VerificarIdentidadeV extends JInternalFrame {
 	private JTextField textField;
 	private JTextField textField_1;
-
+	private static ConfigViews config = new ConfigViews();
 	/**
 	 * Launch the application.
 	 */
@@ -20,6 +20,7 @@ public class VerificarIdentidadeV extends JInternalFrame {
 			public void run() {
 				try {
 					VerificarIdentidadeV frame = new VerificarIdentidadeV();
+					//config.ativarConfigPadrao(frame);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

@@ -34,7 +34,7 @@ public class CompraDAO {
 			ps.setDouble(4, c.getValorC());
 			ps.setDouble(5, c.getDesconto());
 			ps.execute();
-			
+			System.out.println("item cadastrado com sucesso");
 			return true;
 		}catch(SQLException e) {
 			e.printStackTrace();

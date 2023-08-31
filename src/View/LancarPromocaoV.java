@@ -28,7 +28,7 @@ public class LancarPromocaoV extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-
+	private static ConfigViews config = new ConfigViews();
 	/**
 	 * Launch the application.
 	 */
@@ -37,6 +37,7 @@ public class LancarPromocaoV extends JFrame {
 			public void run() {
 				try {
 					LancarPromocaoV frame = new LancarPromocaoV();
+					config.ativarConfigPadrao(frame);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

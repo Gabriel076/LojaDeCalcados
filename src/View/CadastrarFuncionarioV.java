@@ -23,7 +23,7 @@ public class CadastrarFuncionarioV extends JFrame {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTextField textField;
 	private JTextField textField_3;
-
+	private static ConfigViews config = new ConfigViews();
 	/**
 	 * Launch the application.
 	 */
@@ -32,6 +32,7 @@ public class CadastrarFuncionarioV extends JFrame {
 			public void run() {
 				try {
 					CadastrarFuncionarioV frame = new CadastrarFuncionarioV();
+					config.ativarConfigPadrao(frame);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

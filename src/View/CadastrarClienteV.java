@@ -23,7 +23,7 @@ public class CadastrarClienteV extends JFrame {
 	private JTextField caixaNomeClient;
 	private JTextField cpfClient;
 	private JTextField emailClient;
-
+	private static ConfigViews config = new ConfigViews();
 	/**
 	 * Launch the application.
 	 */
@@ -32,6 +32,7 @@ public class CadastrarClienteV extends JFrame {
 			public void run() {
 				try {
 					CadastrarClienteV frame = new CadastrarClienteV();
+					config.ativarConfigPadrao(frame);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

@@ -26,7 +26,7 @@ public class ClienteDAO {
 	
 	//methods
 	public boolean cadastrarCliente(Cliente c) {
-		String sql = "INSERT INTO Cliente(cpf,nome,email) VALUES(?,?,?)";
+		String sql = "INSERT INTO Cliente(cpfClient,nome,email) VALUES(?,?,?)";
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -35,7 +35,7 @@ public class ClienteDAO {
 			ps.setString(3,c.getEmailCliente());
 			ps.execute();
 			
-			System.out.println();
+			System.out.println("item cadastrado com sucesso");
 			return true;
 		}catch(SQLException e) {
 			e.printStackTrace();
