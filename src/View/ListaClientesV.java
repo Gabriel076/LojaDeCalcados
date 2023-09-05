@@ -12,7 +12,10 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.Font;
 import javax.swing.border.BevelBorder;
 import javax.swing.JLabel;
-
+import Controller.ListaClientesController;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 public class ListaClientesV extends JFrame {
 
 	private JPanel contentPane;
@@ -39,6 +42,8 @@ public class ListaClientesV extends JFrame {
 	 * Create the frame.
 	 */
 	public ListaClientesV() {
+		ListaClientesController lc = new ListaClientesController(this);
+
 		setTitle("Listar Clientes");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 627, 750);
@@ -62,12 +67,13 @@ public class ListaClientesV extends JFrame {
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null},
+				
 			},
 			new String[] {
 				"CPF", "Nome", "Email"
 			}
 		));
+		lc.listarClientes();
 		table.setRowHeight(25);
 		table.setFont(new Font("Arial", Font.PLAIN, 15));
 		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
@@ -77,5 +83,23 @@ public class ListaClientesV extends JFrame {
 		lblCliente.setFont(new Font("Arial Black", Font.PLAIN, 15));
 		lblCliente.setBounds(22, 10, 228, 22);
 		panel.add(lblCliente);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lc.voltar(config);
+			}
+		});
+		btnVoltar.setFont(new Font("Arial", Font.PLAIN, 15));
+		btnVoltar.setBounds(404, 606, 120, 32);
+		panel.add(btnVoltar);
+	}
+
+	public JTable getTable() {
+		return table;
+	}
+
+	public void setTable(JTable table) {
+		this.table = table;
 	}
 }

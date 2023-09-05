@@ -1,7 +1,6 @@
 package View;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -10,14 +9,19 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import Controller.MenuFuncController;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class MenuFuncV extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField caixaNome;
+	private JTextField caixaIdade;
+	private JLabel textResptAdmin;
 	private static ConfigViews config = new ConfigViews();
+	private JTextField caixaCpf = new JTextField();;
 	/**
 	 * Launch the application.
 	 */
@@ -39,6 +43,8 @@ public class MenuFuncV extends JFrame {
 	 * Create the frame.
 	 */
 	public MenuFuncV() {
+		MenuFuncController mf = new MenuFuncController(this);
+		mf.pegarLogin();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1126, 747);
 		contentPane = new JPanel();
@@ -63,13 +69,19 @@ public class MenuFuncV extends JFrame {
 		lblNome.setBounds(34, 122, 53, 22);
 		panel.add(lblNome);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Arial", Font.PLAIN, 15));
-		textField.setColumns(10);
-		textField.setBounds(34, 154, 485, 35);
-		panel.add(textField);
+		caixaNome = new JTextField();
+		caixaNome.setFont(new Font("Arial", Font.PLAIN, 15));
+		caixaNome.setColumns(10);
+		caixaNome.setBounds(34, 154, 485, 35);
+		caixaNome.setEditable(false);
+		panel.add(caixaNome);
 		
 		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mf.sair(config);
+			}
+		});
 		btnSair.setFont(new Font("Arial", Font.PLAIN, 15));
 		btnSair.setBounds(706, 618, 179, 32);
 		panel.add(btnSair);
@@ -88,35 +100,81 @@ public class MenuFuncV extends JFrame {
 		panel_1.setBounds(586, 68, 241, 243);
 		panel.add(panel_1);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Arial", Font.PLAIN, 15));
-		textField_1.setColumns(10);
-		textField_1.setBounds(34, 267, 72, 35);
-		panel.add(textField_1);
+		caixaIdade = new JTextField();
+		caixaIdade.setFont(new Font("Arial", Font.PLAIN, 15));
+		caixaIdade.setColumns(10);
+		caixaIdade.setBounds(34, 267, 72, 35);
+		caixaIdade.setEditable(false);
+		panel.add(caixaIdade);
 		
-		JLabel lblIdade = new JLabel("Idade");
+		JLabel lblIdade = new JLabel("Idade:");
 		lblIdade.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblIdade.setBounds(34, 235, 72, 22);
 		panel.add(lblIdade);
 		
+		mf.exibirDados();
 		JLabel lblAdmin = new JLabel("Admin?");
 		lblAdmin.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblAdmin.setBounds(34, 342, 72, 22);
+		lblAdmin.setBounds(34, 516, 72, 22);
 		panel.add(lblAdmin);
 		
-		JLabel textRespt = new JLabel("respt");
-		textRespt.setFont(new Font("Arial", Font.PLAIN, 15));
-		textRespt.setBounds(111, 342, 72, 22);
-		panel.add(textRespt);
+		textResptAdmin = new JLabel("Não");
+		textResptAdmin.setFont(new Font("Arial", Font.PLAIN, 15));
+		textResptAdmin.setBounds(111, 516, 72, 22);
+		panel.add(textResptAdmin);
 		
 		JLabel lblAtivo = new JLabel("Ativo?");
 		lblAtivo.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblAtivo.setBounds(34, 393, 72, 22);
+		lblAtivo.setBounds(34, 567, 72, 22);
 		panel.add(lblAtivo);
 		
-		JLabel textRespt_1 = new JLabel("respt");
-		textRespt_1.setFont(new Font("Arial", Font.PLAIN, 15));
-		textRespt_1.setBounds(111, 393, 72, 22);
-		panel.add(textRespt_1);
+		JLabel textResptAtv = new JLabel("Sim");
+		textResptAtv.setFont(new Font("Arial", Font.PLAIN, 15));
+		textResptAtv.setBounds(111, 567, 72, 22);
+		panel.add(textResptAtv);
+		
+		JLabel lblIdade_1 = new JLabel("CPF:");
+		lblIdade_1.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblIdade_1.setBounds(34, 351, 72, 22);
+		panel.add(lblIdade_1);
+		
+		caixaCpf.setFont(new Font("Arial", Font.PLAIN, 15));
+		//caixaCpf.setEditable(false);
+		caixaCpf.setColumns(10);
+		caixaCpf.setBounds(34, 388, 310, 35);
+		panel.add(caixaCpf);
+	}
+
+	
+	public JTextField getCaixaCpf() {
+		return caixaCpf;
+	}
+
+	public void setCaixaCpf(JTextField caixaCpf) {
+		this.caixaCpf = caixaCpf;
+	}
+
+	public JLabel getTextResptAdmin() {
+		return textResptAdmin;
+	}
+
+	public void setTextResptAdmin(JLabel textResptAdmin) {
+		this.textResptAdmin = textResptAdmin;
+	}
+
+	public JTextField getCaixaNome() {
+		return caixaNome;
+	}
+
+	public void setCaixaNome(JTextField caixaNome) {
+		this.caixaNome = caixaNome;
+	}
+
+	public JTextField getCaixaIdade() {
+		return caixaIdade;
+	}
+
+	public void setCaixaIdade(JTextField caixaIdade) {
+		this.caixaIdade = caixaIdade;
 	}
 }

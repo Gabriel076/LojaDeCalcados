@@ -1,7 +1,6 @@
 package View;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -11,20 +10,25 @@ import java.awt.Color;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.UIManager;
 import javax.swing.ButtonGroup;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import Controller.CadastrarProdutoController;
 
 public class CadastrarProdutoV extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField caixaNomeProduto;
-	private JTextField caixaPrecoProduto;
-	private JTextField caixaNumeracao;
+	private JFormattedTextField caixaPrecoProduto;
+	private JFormattedTextField caixaNumeracao;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private static ConfigViews config = new ConfigViews();
 	private JRadioButton bntRadioCalcado;
 	private JRadioButton rdbtnMeia;
 	private JRadioButton rdbtnAcessrios;
+	private JLabel textResult;
 	/**
 	 * Launch the application.
 	 */
@@ -46,6 +50,7 @@ public class CadastrarProdutoV extends JFrame {
 	 * Create the frame.
 	 */
 	public CadastrarProdutoV() {
+		CadastrarProdutoController cdp = new CadastrarProdutoController(this);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1136, 756);
 		contentPane = new JPanel();
@@ -76,7 +81,7 @@ public class CadastrarProdutoV extends JFrame {
 		panel.add(lblNewLabel_1_1_1);
 		lblNewLabel_1_1_1.setFont(new Font("Arial", Font.PLAIN, 16));
 		
-		 bntRadioCalcado = new JRadioButton("Calçado");
+		bntRadioCalcado = new JRadioButton("Calçado");
 		buttonGroup.add(bntRadioCalcado);
 		bntRadioCalcado.setBackground(new Color(192, 192, 192));
 		bntRadioCalcado.setFont(new Font("Arial", Font.PLAIN, 13));
@@ -90,7 +95,7 @@ public class CadastrarProdutoV extends JFrame {
 		rdbtnMeia.setBounds(173, 62, 72, 21);
 		panel.add(rdbtnMeia);
 		
-		JRadioButton rdbtnAcessrios = new JRadioButton("Acessórios");
+		rdbtnAcessrios = new JRadioButton("Acessórios");
 		buttonGroup.add(rdbtnAcessrios);
 		rdbtnAcessrios.setFont(new Font("Arial", Font.PLAIN, 13));
 		rdbtnAcessrios.setBackground(Color.LIGHT_GRAY);
@@ -113,7 +118,7 @@ public class CadastrarProdutoV extends JFrame {
 		lblNewLabel_1_1_1_1_1.setBounds(26, 219, 51, 19);
 		panel.add(lblNewLabel_1_1_1_1_1);
 		
-		caixaPrecoProduto = new JTextField();
+		caixaPrecoProduto = new JFormattedTextField();
 		caixaPrecoProduto.setFont(new Font("Arial", Font.PLAIN, 13));
 		caixaPrecoProduto.setColumns(10);
 		caixaPrecoProduto.setBounds(26, 248, 147, 38);
@@ -124,21 +129,45 @@ public class CadastrarProdutoV extends JFrame {
 		lblNewLabel_1_1_1_1_1_1.setBounds(26, 316, 97, 19);
 		panel.add(lblNewLabel_1_1_1_1_1_1);
 		
-		caixaNumeracao = new JTextField();
+		caixaNumeracao = null;
+		caixaNumeracao = config.mascara("##", caixaNumeracao);
 		caixaNumeracao.setFont(new Font("Arial", Font.PLAIN, 13));
 		caixaNumeracao.setColumns(10);
 		caixaNumeracao.setBounds(26, 345, 77, 38);
 		panel.add(caixaNumeracao);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cdp.cadastrar();
+			}
+		});
 		btnCadastrar.setFont(new Font("Arial Black", Font.PLAIN, 13));
 		btnCadastrar.setBounds(128, 428, 174, 46);
 		panel.add(btnCadastrar);
 		
 		JButton btnVoltar = new JButton("Menu");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cdp.voltar(config);
+			}
+		});
 		btnVoltar.setFont(new Font("Arial", Font.PLAIN, 15));
 		btnVoltar.setBounds(914, 10, 198, 36);
 		contentPane.add(btnVoltar);
+		
+		textResult = new JLabel("");
+		textResult.setFont(new Font("Arial", Font.PLAIN, 16));
+		textResult.setBounds(847, 234, 265, 23);
+		contentPane.add(textResult);
+	}
+
+	public JLabel getTextResult() {
+		return textResult;
+	}
+
+	public void setTextResult(JLabel textResult) {
+		this.textResult = textResult;
 	}
 
 	public JTextField getCaixaNomeProduto() {
@@ -153,7 +182,7 @@ public class CadastrarProdutoV extends JFrame {
 		return caixaPrecoProduto;
 	}
 
-	public void setCaixaPrecoProduto(JTextField caixaPrecoProduto) {
+	public void setCaixaPrecoProduto(JFormattedTextField caixaPrecoProduto) {
 		this.caixaPrecoProduto = caixaPrecoProduto;
 	}
 
@@ -161,7 +190,7 @@ public class CadastrarProdutoV extends JFrame {
 		return caixaNumeracao;
 	}
 
-	public void setCaixaNumeracao(JTextField caixaNumeracao) {
+	public void setCaixaNumeracao(JFormattedTextField caixaNumeracao) {
 		this.caixaNumeracao = caixaNumeracao;
 	}
 
@@ -188,5 +217,4 @@ public class CadastrarProdutoV extends JFrame {
 	public void setRdbtnAcessrios(JRadioButton rdbtnAcessrios) {
 		this.rdbtnAcessrios = rdbtnAcessrios;
 	}
-	
 }

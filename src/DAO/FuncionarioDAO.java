@@ -5,9 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import Model.Funcionario;
-import Model.Produto;
 public class FuncionarioDAO {
 	private Connection conn;
 
@@ -69,10 +67,14 @@ public class FuncionarioDAO {
 			ps.setBoolean(3, admin);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
+				String cpfColetado = rs.getString("cpfFunc");
+				String nomeColetado = rs.getString("nome");
+				int idade = rs.getInt("idade");
 				String loginColetado = rs.getString("login");
 				String senhaColetada = rs.getString("senha");
+				boolean adm = rs.getBoolean("adm");
 				
-				Funcionario f = new Funcionario(null,null,0,loginColetado,senhaColetada,false);
+				Funcionario f = new Funcionario(cpfColetado,nomeColetado,idade,loginColetado,senhaColetada,adm);
 				return f;
 			}
 				
@@ -97,7 +99,8 @@ public class FuncionarioDAO {
 				String login = rs.getString("login");
 				String senha = rs.getString("senha");
 				boolean admin = rs.getBoolean("adm");
-				Funcionario func = new Funcionario(nome,cpfFunc,idade,login,senha,admin);
+				
+				Funcionario func = new Funcionario(cpfFunc,nome,idade,login,senha,admin);
 				return func;
 			}
 			return null;
@@ -121,7 +124,7 @@ public class FuncionarioDAO {
 				String login = rs.getString("login");
 				String senha = rs.getString("senha");
 				boolean admin = rs.getBoolean("adm");
-				Funcionario func = new Funcionario(nome,cpfFunc,idade,login,senha,admin);
+				Funcionario func = new Funcionario(cpfFunc,nome,idade,login,senha,admin);
 				funcionariosCadastrados.add(func);
 			}
 			return funcionariosCadastrados;

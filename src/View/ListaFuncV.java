@@ -1,7 +1,6 @@
 package View;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -13,6 +12,9 @@ import javax.swing.JTable;
 import javax.swing.border.BevelBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
+import Controller.ListaFuncController;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ListaFuncV extends JFrame {
 
@@ -40,6 +42,7 @@ public class ListaFuncV extends JFrame {
 	 * Create the frame.
 	 */
 	public ListaFuncV() {
+		ListaFuncController lf = new ListaFuncController(this);
 		setTitle("Listar Funcionários");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 635, 734);
@@ -63,12 +66,13 @@ public class ListaFuncV extends JFrame {
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null},
 			},
 			new String[] {
 				"CPF", "Nome", "Idade", "Login", "Senha"
 			}
 		));
+		table.getColumnModel().getColumn(0).setPreferredWidth(115);
+		lf.listarFuncionario();
 		table.setRowHeight(25);
 		table.setFont(new Font("Arial", Font.PLAIN, 15));
 		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
@@ -79,9 +83,22 @@ public class ListaFuncV extends JFrame {
 		lblCliente.setBounds(22, 10, 228, 22);
 		panel.add(lblCliente);
 		
-		JButton btnImprimirTalvez = new JButton("Imprimir talvez");
-		btnImprimirTalvez.setFont(new Font("Arial", Font.PLAIN, 15));
-		btnImprimirTalvez.setBounds(352, 602, 175, 36);
-		panel.add(btnImprimirTalvez);
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lf.voltar(config);
+			}
+		});
+		btnVoltar.setFont(new Font("Arial", Font.PLAIN, 15));
+		btnVoltar.setBounds(10, 604, 120, 32);
+		panel.add(btnVoltar);
+	}
+
+	public JTable getTable() {
+		return table;
+	}
+
+	public void setTable(JTable table) {
+		this.table = table;
 	}
 }

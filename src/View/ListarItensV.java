@@ -1,18 +1,16 @@
 package View;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JRadioButton;
 import javax.swing.JButton;
-import javax.swing.JTextField;
-import java.awt.Toolkit;
-import javax.swing.JScrollBar;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import Controller.ListarItensController;
 
 public class ListarItensV extends JFrame {
 
@@ -39,6 +37,7 @@ public class ListarItensV extends JFrame {
 	 * Create the frame.
 	 */
 	public ListarItensV() {
+		ListarItensController lc = new ListarItensController(this);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 677, 766);
 		contentPane = new JPanel();
@@ -70,6 +69,11 @@ public class ListarItensV extends JFrame {
 		panel_2.setLayout(null);
 		
 		JButton btnListarClient = new JButton("Listar");
+		btnListarClient.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lc.listarCliente(config);
+			}
+		});
 		btnListarClient.setBounds(235, 12, 160, 39);
 		panel_2.add(btnListarClient);
 		btnListarClient.setFont(new Font("Arial Black", Font.PLAIN, 13));
@@ -86,6 +90,11 @@ public class ListarItensV extends JFrame {
 		panel_1.add(panel_2_1);
 		
 		JButton btnListarFunc = new JButton("Listar");
+		btnListarFunc.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lc.listarFuncionario(config);
+			}
+		});
 		btnListarFunc.setBounds(235, 12, 160, 39);
 		panel_2_1.add(btnListarFunc);
 		btnListarFunc.setFont(new Font("Arial Black", Font.PLAIN, 13));
@@ -102,6 +111,11 @@ public class ListarItensV extends JFrame {
 		panel_1.add(panel_2_1_1);
 		
 		JButton btnListarProdt = new JButton("Listar");
+		btnListarProdt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lc.listarProduto(config);
+			}
+		});
 		btnListarProdt.setFont(new Font("Arial Black", Font.PLAIN, 13));
 		btnListarProdt.setBounds(235, 12, 160, 39);
 		panel_2_1_1.add(btnListarProdt);
@@ -112,6 +126,11 @@ public class ListarItensV extends JFrame {
 		lblProdutos.setFont(new Font("Arial Black", Font.PLAIN, 15));
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lc.voltar(config);
+			}
+		});
 		btnVoltar.setFont(new Font("Arial", Font.PLAIN, 15));
 		btnVoltar.setBounds(438, 626, 106, 36);
 		panel.add(btnVoltar);

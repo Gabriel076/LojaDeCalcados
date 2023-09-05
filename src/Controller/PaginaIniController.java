@@ -14,6 +14,7 @@ public class PaginaIniController {
 	private Funcionario func;
 	private AvisoV aviso;
 	private boolean isAdm;
+	private static Funcionario f;
 	public PaginaIniController(PaginaInicialV view) {
 		this.view = view;
 	}
@@ -31,10 +32,12 @@ public class PaginaIniController {
 		funcDao = new FuncionarioDAO();
 		try {
 		if(login.equals(funcDao.validarFuncionario(login, senha, isAdm).getLogin())&&senha.equals(funcDao.validarFuncionario(login, senha, isAdm).getSenha())&&isAdm==false) {
+			f = funcDao.validarFuncionario(login, senha, isAdm);
 			MenuFuncV mn = new MenuFuncV();
 			mn.setVisible(true);
 			cf.ativarConfigPadrao(mn);
 			this.view.dispose();
+			
 		}else if(login.equals(funcDao.validarFuncionario(login, senha, isAdm).getLogin())&&senha.equals(funcDao.validarFuncionario(login, senha, isAdm).getSenha())&&isAdm==true) {
 			MenuAdminV mnAdm = new MenuAdminV();
 			mnAdm.setVisible(true);
@@ -47,5 +50,12 @@ public class PaginaIniController {
 		}
 		
 	}
+	public Funcionario getF() {
+		return f;
+	}
+	public void setF(Funcionario f) {
+		PaginaIniController.f = f;
+	}
+
 	
 }

@@ -9,7 +9,7 @@ use LojaDeCalcados;
 create table Produto(
 	idProduto int AUTO_INCREMENT primary key,
     tipo varchar(15),
-    nomeProduto varchar(10),
+    nomeProduto varchar(40),
     preco double,
     numeracao varchar(3)
 );
@@ -79,10 +79,10 @@ create table CargaHoraria(
 
 -- cmds
 use LojaDeCalcados;
-insert into Funcionario(cpfFunc,nome,adm,idade,login,senha) values ("404.404.343-83","jorge",true,25,"333","333");
+insert into Funcionario(cpfFunc,nome,adm,idade,login,senha) values ("32132321","jorge",true,25,"333","333");
 
 use LojaDeCalcados;
-insert into Cliente(cpfClient,nome,email) values ("213.212.222-22","gabriel","ga@gmail.com");
+insert into Cliente(cpfClient,nome,email) values ("213.212.222-09","teste1","teste1@gmail.com");
 
 use LojaDeCalcados;
 insert into Produto(tipo,nomeProduto,preco,numeracao) values("sapato","pegada",150.0,40);
@@ -92,6 +92,7 @@ insert into Produto(tipo,nomeProduto,preco,numeracao) values("sapato","pegada",1
 use LojaDeCalcados;
 select* from Produto;
 
+use LojaDeCalcados;
 select* from Cliente;
 
 use LojaDeCalcados;

@@ -28,7 +28,7 @@ public class ProdutoDAO {
 	
 	//methods
 	public boolean cadastrarProduto(Produto p) {
-		String sql = "INSERT INTO Produto(tipo,nomeProduto,preco,numerecao) VALUES(?,?,?,?)";
+		String sql = "INSERT INTO Produto(tipo,nomeProduto,preco,numeracao) VALUES(?,?,?,?)";
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);

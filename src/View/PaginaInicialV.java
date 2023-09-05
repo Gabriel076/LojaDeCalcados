@@ -15,6 +15,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.ButtonGroup;
 import Controller.PaginaIniController;
+import Model.Funcionario;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -163,6 +165,8 @@ public class PaginaInicialV extends JFrame {
 	public ButtonGroup getButtonGroup() {
 		return buttonGroup;
 	}
+
+
 
 	
 }
